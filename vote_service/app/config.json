@@ -1,0 +1,14 @@
+{
+    "is_debug": true,
+    "JWT": {
+        "secret": ""
+    },
+    "Listen": {
+        "type": "port",
+        "bind_ip": "localhost",
+        "port": "8080"
+    },
+    "Api_GatewayService": {
+        "url": true
+    }
+}

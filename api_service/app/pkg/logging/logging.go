@@ -44,7 +44,6 @@ func (l *Logger) PrintError(err error) {
 
 func (l *Logger) PrintFatal(err error) {
 	l.print(LevelFatal, err.Error())
-	os.Exit(1)
 }
 
 func (l *Logger) print(level Level, message string) {
@@ -54,7 +53,7 @@ func (l *Logger) print(level Level, message string) {
 	case LevelError:
 		l.logTypes["error"].Printf(message)
 	case LevelFatal:
-		l.logTypes["fatal"].Printf(message)
+		l.logTypes["fatal"].Fatalf(message)
 	default:
 	}
 }
