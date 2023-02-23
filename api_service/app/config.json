@@ -1,14 +1,18 @@
 {
-    "is_debug": true,
-    "JWT": {
-        "secret": ""
-    },
-    "Listen": {
-        "type": "port",
+    "listen": {
         "bind_ip": "localhost",
         "port": "8080"
     },
-    "Api_GatewayService": {
-        "url": true
+    "iam_service": {
+        "url": "http://localhost:8081"
+    },
+    "user_service": {
+        "url": "http://localhost:8082"
+    },
+    "post_service": {
+        "url": "http://localhost:8083"
+    },
+    "vote_service": {
+        "url": "http://localhost:8083"
     }
 }

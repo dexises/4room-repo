@@ -25,12 +25,10 @@ type Logger struct {
 var logger *Logger
 
 func GetLoggerInstance() *Logger {
-	if logger == nil {
-		once.Do(
-			func() {
-				Init()
-			})
-	}
+	once.Do(
+		func() {
+			logger.init()
+		})
 	return logger
 }
 
@@ -58,9 +56,7 @@ func (l *Logger) print(level Level, message string) {
 	}
 }
 
-func Init() {
-	logger.minLevel = LevelInfo
-
+func (l *Logger) init() {
 	err := os.MkdirAll("logs", 0o755)
 
 	if err != nil || os.IsExist(err) {
@@ -93,5 +89,8 @@ func Init() {
 	fatalLog := log.New(fatalF, "FATAL\t", log.Ldate|log.Ltime|log.Lshortfile)
 	logTypes["fatal"] = fatalLog
 
-	logger.logTypes = logTypes
+	l = &Logger{
+		logTypes: logTypes,
+		minLevel: LevelInfo,
+	}
 }

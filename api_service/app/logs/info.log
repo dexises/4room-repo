@@ -1,0 +1,10 @@
+INFO	2023/02/22 12:51:58 logger initialized
+INFO	2023/02/22 12:51:58 read application config
+INFO	2023/02/22 12:51:58 config initialized
+INFO	2023/02/22 12:51:58 router initialized
+INFO	2023/02/22 12:51:58 bind application to host: localhost and port: 8080
+INFO	2023/02/22 12:51:58 application initialized and started
+INFO	2023/02/22 12:51:58 http://localhost:8081
+localhost
+8080
+http://localhost:8083
