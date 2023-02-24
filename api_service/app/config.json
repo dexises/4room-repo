@@ -1,8 +1,5 @@
 {
-    "listen": {
-        "bind_ip": "localhost",
-        "port": "8080"
-    },
+   "port": ":8080",
     "iam_service": {
         "url": "http://localhost:8081"
     },

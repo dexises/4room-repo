@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	usersURL = "/users"
-	userURL  = "/users/:id"
+	usersURL = "/api/users"
+	userURL  = "/api/users/:id"
 )
 
 type handler struct{}
@@ -18,11 +18,11 @@ func NewHandler() handlers.Handler {
 }
 
 func (h *handler) Register(router *http.ServeMux) {
-	router.HandleFunc(usersURL, h.GetUsersList)
-	router.HandleFunc(usersURL, h.CreateUser)
-	router.HandleFunc(userURL, h.GetUserByID)
-	router.HandleFunc(userURL, h.UpdateUser)
-	router.HandleFunc(userURL, h.DeleteUser)
+	router.HandleFunc(usersURL+"/read", h.GetUsersList)
+	router.HandleFunc(usersURL+"/create", h.CreateUser)
+	router.HandleFunc(userURL+"/read", h.GetUserByID)
+	router.HandleFunc(userURL+"/update", h.UpdateUser)
+	router.HandleFunc(userURL+"/delete", h.DeleteUser)
 }
 
 func (h *handler) GetUsersList(w http.ResponseWriter, r *http.Request) {

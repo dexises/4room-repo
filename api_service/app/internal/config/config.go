@@ -9,10 +9,7 @@ import (
 )
 
 type Config struct {
-	Listen struct {
-		BindIP string `json:"bind_ip" env-default:"localhost"`
-		Port   string `json:"port" env-default:"8080"`
-	} `json:"listen" env-default:"{\"bind_ip\":\"localhost\", \"port\":\"8080\"}"`
+	Port       string `json:"port"`
 	IAMService struct {
 		URL string `json:"url" env-required:"true"`
 	} `json:"iam_service" env-required:"true"`

@@ -32,7 +32,7 @@ func main() {
 
 func serve(router *http.ServeMux, logger *logging.Logger, cfg *config.Config) {
 	server := &http.Server{
-		Addr:         cfg.Listen.Port,
+		Addr:         cfg.Port,
 		Handler:      router,
 		IdleTimeout:  time.Minute,
 		WriteTimeout: 15 * time.Second,

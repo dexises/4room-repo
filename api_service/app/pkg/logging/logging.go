@@ -15,20 +15,21 @@ const (
 	LevelOff
 )
 
-var once sync.Once
-
 type Logger struct {
 	minLevel Level
 	logTypes map[string]*log.Logger
 }
 
-var logger *Logger
+var (
+	once   sync.Once
+	logger *Logger
+)
 
 func GetLoggerInstance() *Logger {
-	once.Do(
-		func() {
-			logger.init()
-		})
+	once.Do(func() {
+		logger = &Logger{}
+		logger.init()
+	})
 	return logger
 }
 
@@ -89,8 +90,6 @@ func (l *Logger) init() {
 	fatalLog := log.New(fatalF, "FATAL\t", log.Ldate|log.Ltime|log.Lshortfile)
 	logTypes["fatal"] = fatalLog
 
-	l = &Logger{
-		logTypes: logTypes,
-		minLevel: LevelInfo,
-	}
+	l.logTypes = logTypes
+	l.minLevel = LevelInfo
 }
