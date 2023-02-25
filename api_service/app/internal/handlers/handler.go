@@ -1,7 +1,9 @@
 package handlers
 
-import "net/http"
+import (
+	"github.com/dexises/4room/api_service/pkg/router"
+)
 
 type Handler interface {
-	Register(router *http.ServeMux)
+	Register(router *router.Router)
 }

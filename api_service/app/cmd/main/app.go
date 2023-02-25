@@ -12,6 +12,7 @@ import (
 	"github.com/dexises/4room/api_service/internal/config"
 	"github.com/dexises/4room/api_service/internal/user"
 	"github.com/dexises/4room/api_service/pkg/logging"
+	"github.com/dexises/4room/api_service/pkg/router"
 )
 
 func main() {
@@ -21,7 +22,7 @@ func main() {
 	cfg := config.GetConfigInstance()
 	logger.PrintInfo("config initialized")
 
-	router := http.NewServeMux()
+	router := router.NewRouter()
 	logger.PrintInfo("router initialized")
 
 	handler := user.NewHandler()
@@ -30,7 +31,7 @@ func main() {
 	serve(router, logger, cfg)
 }
 
-func serve(router *http.ServeMux, logger *logging.Logger, cfg *config.Config) {
+func serve(router http.Handler, logger *logging.Logger, cfg *config.Config) {
 	server := &http.Server{
 		Addr:         cfg.Port,
 		Handler:      router,

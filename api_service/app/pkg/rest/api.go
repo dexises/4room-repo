@@ -33,10 +33,10 @@ func (ar *APIResponse) Location() (*url.URL, error) {
 
 type APIError struct {
 	Message          string `json:"message,omitempty"`
-	ErrorCode        string `json:"error_code,omitempty"`
+	ErrorCode        int    `json:"error_code,omitempty"`
 	DeveloperMessage string `json:"developer_message,omitempty"`
 }
 
 func (aep *APIError) ToString() string {
-	return fmt.Sprintf("Err code: %s, Err: %s, Developer Err: %s", aep.ErrorCode, aep.Message, aep.DeveloperMessage)
+	return fmt.Sprintf("Err code: %d, Err: %s, Developer Err: %s", aep.ErrorCode, aep.Message, aep.DeveloperMessage)
 }

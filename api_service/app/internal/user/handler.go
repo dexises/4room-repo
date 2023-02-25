@@ -4,11 +4,12 @@ import (
 	"net/http"
 
 	"github.com/dexises/4room/api_service/internal/handlers"
+	"github.com/dexises/4room/api_service/pkg/router"
 )
 
 const (
 	usersURL = "/api/users"
-	userURL  = "/api/users/:id"
+	userURL  = "/api/user"
 )
 
 type handler struct{}
@@ -17,12 +18,12 @@ func NewHandler() handlers.Handler {
 	return &handler{}
 }
 
-func (h *handler) Register(router *http.ServeMux) {
-	router.HandleFunc(usersURL+"/read", h.GetUsersList)
-	router.HandleFunc(usersURL+"/create", h.CreateUser)
-	router.HandleFunc(userURL+"/read", h.GetUserByID)
-	router.HandleFunc(userURL+"/update", h.UpdateUser)
-	router.HandleFunc(userURL+"/delete", h.DeleteUser)
+func (h *handler) Register(router *router.Router) {
+	router.GET(usersURL, h.GetUsersList)
+	router.POST(usersURL, h.CreateUser)
+	router.GET(userURL, h.GetUserByID)
+	router.PATCH(userURL, h.UpdateUser)
+	router.DELETE(userURL, h.DeleteUser)
 }
 
 func (h *handler) GetUsersList(w http.ResponseWriter, r *http.Request) {
