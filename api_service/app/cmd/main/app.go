@@ -9,10 +9,11 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/dexises/4room/api_service/internal/client/user_service"
 	"github.com/dexises/4room/api_service/internal/config"
-	"github.com/dexises/4room/api_service/internal/user"
+	"github.com/dexises/4room/api_service/internal/handlers/auth"
 	"github.com/dexises/4room/api_service/pkg/logging"
-	"github.com/dexises/4room/api_service/pkg/router"
+	"github.com/ynuraddi/router"
 )
 
 func main() {
@@ -25,7 +26,8 @@ func main() {
 	router := router.NewRouter()
 	logger.PrintInfo("router initialized")
 
-	handler := user.NewHandler()
+	userService := user_service.NewService(cfg.UserService.URL, "/users", *logger)
+	handler := auth.Handler{UserService: userService, Logger: *logger}
 	handler.Register(router)
 
 	serve(router, logger, cfg)

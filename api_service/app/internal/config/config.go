@@ -13,7 +13,7 @@ type Config struct {
 	IAMService struct {
 		URL string `json:"url" env-required:"true"`
 	} `json:"iam_service" env-required:"true"`
-	UserManagementService struct {
+	UserService struct {
 		URL string `json:"url" env-required:"true"`
 	} `json:"user_service" env-required:"true"`
 	PostService struct {

@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github.com/dexises/4room/api_service/pkg/router"
+	"github.com/ynuraddi/router"
 )
 
 type Handler interface {

@@ -1,1 +1,2 @@
-FATAL	2023/02/24 13:07:20 logging.go:55: listen tcp: address 8080: missing port in address
+FATAL	2023/02/25 15:55:44 logging.go:55: listen tcp :8080: bind: address already in use
+ss
